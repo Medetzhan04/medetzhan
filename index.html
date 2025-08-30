@@ -30,7 +30,6 @@
     }
 
     body {
-      /* Новый фон — полностью покрывает экран */
       background-color: var(--bg1);
       background-image:
         radial-gradient(circle at 15% 15%, rgba(96,165,250,0.12), transparent 60%),
@@ -38,16 +37,21 @@
       background-repeat: no-repeat;
       background-size: cover;
       background-attachment: fixed;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      /* Убираем смещение на мобильных устройствах */
+      padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       padding: clamp(12px, 4vw, 32px);
+
       color: white;
     }
 
     .card {
       width: 100%;
-      max-width: 420px;
+      max-width: clamp(340px, 90vw, 440px); /* Динамическая ширина */
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border-radius: var(--card-radius);
       padding: clamp(18px, 4vw, 28px);
@@ -56,6 +60,7 @@
       border: 1px solid rgba(255,255,255,0.05);
       position: relative;
       transition: var(--transition);
+      margin: 0 auto; /* Центрируем карточку */
     }
 
     .card:hover {
@@ -85,8 +90,8 @@
     }
 
     .avatar-wrap {
-      width: clamp(80px, 20vw, 140px);
-      height: clamp(80px, 20vw, 140px);
+      width: clamp(90px, 24vw, 150px);
+      height: clamp(90px, 24vw, 150px);
       display: grid;
       place-items: center;
       border-radius: 50%;
@@ -111,7 +116,7 @@
     }
 
     .name {
-      font-size: clamp(18px, 2.5vw, 26px);
+      font-size: clamp(20px, 3vw, 28px);
       font-weight: 800;
       margin-top: 12px;
     }
@@ -127,8 +132,8 @@
     .social a {
       display: inline-grid;
       place-items: center;
-      width: clamp(36px, 10vw, 48px);
-      height: clamp(36px, 10vw, 48px);
+      width: clamp(42px, 12vw, 54px);
+      height: clamp(42px, 12vw, 54px);
       border-radius: 14px;
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid rgba(255,255,255,0.06);
@@ -148,7 +153,7 @@
 
     @media (max-width: 480px) {
       .social {
-        gap: 10px;
+        gap: 12px;
       }
     }
   </style>
